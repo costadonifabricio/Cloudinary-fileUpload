@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+
+<div
+  class="w-100 d-flex flex-column align-items-center justify-content-center"
+>
+  <form class="w-50 mt-5 d-flex flex-column" id="formularioCloudinary" enctype="multipart/form-data">
+    <div class="mb-3">
+        <h2>En este formulario podras subir archivos mediante Cloudinary</h2>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Archivo (Cloudinary):</label>
+      <input
+        name="fileC"
+        type="file"
+      />
+    </div>
+    <input
+      type="submit"
+      value="Enviar"
+      class="btn btn-primary align-self-center"
+    />
+    <div class="align-self-center mt-5" role="status" id="loader"></div>
+    <p id="resultado"></p>
+  </form>
+  <div class="w-50 border d-flex flex-column" id="containerImages">
+    
+  </div>
+</div>
+
+<script src="/archivocloud.js"></script>
+
+<%- include('partials/footer') %>

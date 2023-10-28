@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<div
+  class="vh-100 w-100 d-flex flex-column align-items-center justify-content-center"
+>
+  <form class="w-50 d-flex flex-column" id="formulario" enctype="multipart/form-data">
+    <div class="mb-3">
+      <h2>En este formulario podras subir archivos mediante Express-fileupload</h2>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Archivo (file-upload):</label>
+      <input
+        name="file"
+        type="file"
+      />
+    </div>
+    <input
+      type="submit"
+      value="Enviar"
+      class="btn btn-primary align-self-center"
+    />
+  </form>
+</div>
+
+<script src="/archivofileupload.js"></script>
+
+<%- include('partials/footer') %>
