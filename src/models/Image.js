@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "sequelize";
+import { sequelize } from '../database/db.js';
 
 export const ImgModel = sequelize.define("image",
     {
@@ -20,4 +20,8 @@ export const ImgModel = sequelize.define("image",
     }
 )
 
-export { ImgModel };
+ImgModel.sync({ force: false }).then(() => {
+    console.log("Tabla ImgModel creada");
+});
+
+export default ImgModel ;

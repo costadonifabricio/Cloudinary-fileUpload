@@ -4,6 +4,7 @@ import cors from 'cors';
 import fileUpload from 'express-fileupload';
 import 'dotenv/config';
 import cloudinary from 'cloudinary';
+import { router } from './src/routes/img.routes.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -25,6 +26,8 @@ app.use(fileUpload({
     responseOnLimit: "Archivo muy grande!"
   }))
 app.use(express.urlencoded({ extended: true }));
+
+app.use('/', router);
 
 app.listen(port, () => {
     console.log(`Server listen in port ${port}`);
