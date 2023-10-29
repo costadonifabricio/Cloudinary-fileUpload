@@ -3,18 +3,23 @@ const formulario = document.getElementById("formulario");
 formulario.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const fileToUpload = new FormData(formulario)
+  try {
+    const fileToUpload = new FormData(formulario);
 
-  const nuevoArchivo = await fetch("http://localhost:4000/api/submitFileExpress", {
-    method: "POST",
-    body: fileToUpload
-  })
-  .then((response) => response.json())
-  .then((res) => alert(res.msg))
+    const response = await fetch("http://localhost:4000/api/upload", {
+      method: "POST",
+      body: fileToUpload,
+    });
 
-  if (!nuevoArchivo) {
-    return { msg: "Error al subir el archivo!!" }
-  } else {
-    return { msg: "Archivo subido correctamente" }
+    if (response.ok) {
+      const data = await response.json();
+      alert(data.msg);
+    } else {
+      throw new Error("Error al subir el archivo!!");
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Error al subir el archivo!!");
   }
 });
+
